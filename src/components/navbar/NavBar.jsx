@@ -1,35 +1,38 @@
+import { Link, NavLink } from 'react-router-dom'
 import CartWidget from '../CartWidget/CartWidget'
-import './navbar.css'
+import './NavBar.css'
 
 const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo/Brand */}
-        <div className="navbar-brand">
-          <h2>TechStore</h2>
-        </div>
+        <Link to="/" className="navbar-brand">
+          TechStore
+        </Link>
 
-        {/* Navigation Links */}
         <ul className="navbar-menu">
-          <li className="navbar-item">
-            <a href="#" className="navbar-link">Inicio</a>
+          <li>
+            <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''} end>
+              Inicio
+            </NavLink>
           </li>
-          <li className="navbar-item">
-            <a href="#" className="navbar-link">Smartphones</a>
+          <li>
+            <NavLink to="/category/smartphones" className={({ isActive }) => isActive ? 'active' : ''}>
+              Smartphones
+            </NavLink>
           </li>
-          <li className="navbar-item">
-            <a href="#" className="navbar-link">Laptops</a>
+          <li>
+            <NavLink to="/category/laptops" className={({ isActive }) => isActive ? 'active' : ''}>
+              Laptops
+            </NavLink>
           </li>
-          <li className="navbar-item">
-            <a href="#" className="navbar-link">Accesorios</a>
-          </li>
-          <li className="navbar-item">
-            <a href="#" className="navbar-link">Contacto</a>
+          <li>
+            <NavLink to="/category/accesorios" className={({ isActive }) => isActive ? 'active' : ''}>
+              Accesorios
+            </NavLink>
           </li>
         </ul>
 
-        {/* Cart Widget */}
         <CartWidget />
       </div>
     </nav>

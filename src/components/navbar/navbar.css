@@ -67,6 +67,19 @@
   left: 0;
 }
 
+.navbar-menu li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-menu li a.active,
+.navbar-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 /* Responsive */
 @media (max-width: 768px) {
   .navbar-container {
