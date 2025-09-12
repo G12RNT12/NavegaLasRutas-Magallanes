@@ -1,6 +1,9 @@
+// src/components/ItemDetailContainer/ItemDetailContainer.jsx
+
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
+import NotFound from '../NotFound'
 import { products as allProducts } from '../../data/products'
 
 const fetchProductById = (id) => {
@@ -24,15 +27,15 @@ const ItemDetailContainer = () => {
       .finally(() => setLoading(false))
   }, [itemId])
 
-  return (
-    <div>
-      {loading ? (
-        <p style={{ textAlign: 'center', marginTop: '2rem' }}>Cargando detalle...</p>
-      ) : (
-        <ItemDetail product={product} />
-      )}
-    </div>
-  )
+  if (loading) {
+    return <p style={{ textAlign: 'center', marginTop: '2rem' }}>Cargando detalle...</p>
+  }
+
+  if (!product) {
+    return <NotFound />
+  }
+
+  return <ItemDetail product={product} />
 }
 
 export default ItemDetailContainer
