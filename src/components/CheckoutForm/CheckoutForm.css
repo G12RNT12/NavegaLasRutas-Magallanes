@@ -1,0 +1,76 @@
+/* src/components/CheckoutForm/CheckoutForm.css */
+.checkout {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.checkout h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.order-summary {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checkout-form input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.checkout-form button {
+  padding: 0.75rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.checkout-form button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #dc3545;
+  background: #f8d7da;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.checkout-success {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+  background: #d4edda;
+  border-radius: 8px;
+}
+
+.checkout-empty {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.checkout-empty button {
+  padding: 0.5rem 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

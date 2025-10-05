@@ -1,14 +1,17 @@
-import './CartWidget.css'
+// src/components/CartWidget/CartWidget.jsx
+import { Link } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
+import './CartWidget.css';
 
 const CartWidget = () => {
-  return (
-    <div className="cart-widget">
-      <div className="cart-icon">
-        🛒
-      </div>
-      <span className="cart-notification">3</span>
-    </div>
-  )
-}
+  const { getTotalQuantity } = useCart();
 
-export default CartWidget
+  return (
+    <Link to="/cart" className="cart-widget">
+      <img src="https://via.placeholder.com/30?text=🛒" alt="Carrito" />
+      {getTotalQuantity() > 0 && <span className="cart-count">{getTotalQuantity()}</span>}
+    </Link>
+  );
+};
+
+export default CartWidget;

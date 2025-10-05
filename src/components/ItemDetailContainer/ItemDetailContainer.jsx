@@ -1,41 +1,32 @@
 // src/components/ItemDetailContainer/ItemDetailContainer.jsx
-
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import ItemDetail from '../ItemDetail/ItemDetail'
-import NotFound from '../NotFound'
-import { products as allProducts } from '../../data/products'
-
-const fetchProductById = (id) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const product = allProducts.find(p => p.id === id)
-      resolve(product)
-    }, 800)
-  })
-}
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import ItemDetail from '../ItemDetail/ItemDetail';
+import NotFound from '../NotFound';
+import { getProductById } from '../../services/firebase';
 
 const ItemDetailContainer = () => {
-  const { itemId } = useParams()
-  const [product, setProduct] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const { itemId } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true)
-    fetchProductById(itemId)
+    setLoading(true);
+    getProductById(itemId)
       .then(data => setProduct(data))
-      .finally(() => setLoading(false))
-  }, [itemId])
+      .catch(error => console.error('Error fetching product:', error))
+      .finally(() => setLoading(false));
+  }, [itemId]);
 
   if (loading) {
-    return <p style={{ textAlign: 'center', marginTop: '2rem' }}>Cargando detalle...</p>
+    return <p style={{ textAlign: 'center', marginTop: '2rem' }}>Cargando detalle...</p>;
   }
 
   if (!product) {
-    return <NotFound />
+    return <NotFound />;
   }
 
-  return <ItemDetail product={product} />
-}
+  return <ItemDetail product={product} />;
+};
 
-export default ItemDetailContainer
+export default ItemDetailContainer;

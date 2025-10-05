@@ -31,6 +31,12 @@ const NavBar = () => {
               Accesorios
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/cart" className={({ isActive }) => isActive ? 'active' : ''}>
+              Carrito
+            </NavLink>
+          </li>
+
         </ul>
 
         <CartWidget />

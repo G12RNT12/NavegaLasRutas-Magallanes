@@ -1,8 +1,14 @@
-import ItemCount from '../ItemCount/ItemCount'
-import './ItemDetail.css'
+// src/components/ItemDetail/ItemDetail.jsx
+import { useCart } from '../../context/CartContext';
+import ItemCount from '../ItemCount/ItemCount';
+import './ItemDetail.css';
 
 const ItemDetail = ({ product }) => {
-  if (!product) return <p>Producto no encontrado</p>
+  const { addItem } = useCart();
+
+  const handleAddToCart = (quantity) => {
+    addItem(product, quantity);
+  };
 
   return (
     <div className="item-detail">
@@ -11,10 +17,10 @@ const ItemDetail = ({ product }) => {
         <h2>{product.title}</h2>
         <p>{product.description}</p>
         <p className="price">${product.price}</p>
-        <ItemCount stock={10} initial={1} />
+        <ItemCount stock={product.stock || 10} onAdd={handleAddToCart} />  // Asume stock en producto
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ItemDetail
+export default ItemDetail;
